@@ -12,9 +12,18 @@ jobs:
   register:
     runs-on: ubuntu-latest
     steps:
-      - name: Send SMS
+      - name: Checkout
+        uses: actions/checkout@v4
+      
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.10'
+      
+      - name: Install
+        run: pip install requests
+      
+      - name: Run registration
         env:
           PHONE: ${{ inputs.phone }}
-        run: |
-          echo "📱 Начинаю регистрацию номера $PHONE"
-          echo "✅ Готово! Номер зарегистрирован (имитация)"
+        run: python bot.py
