@@ -1,0 +1,20 @@
+name: SMS Bot
+
+on:
+  workflow_dispatch:
+    inputs:
+      phone:
+        description: 'Номер телефона (только цифры)'
+        required: true
+        type: string
+
+jobs:
+  register:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Send SMS
+        env:
+          PHONE: ${{ inputs.phone }}
+        run: |
+          echo "📱 Начинаю регистрацию номера $PHONE"
+          echo "✅ Готово! Номер зарегистрирован (имитация)"
