@@ -11,10 +11,6 @@ on:
         description: 'Время (минуты)'
         required: true
         type: string
-      chat_id:
-        description: 'Chat ID'
-        required: true
-        type: string
 
 jobs:
   register:
@@ -35,6 +31,4 @@ jobs:
         env:
           PHONE: ${{ inputs.phone }}
           TIME: ${{ inputs.time }}
-          CHAT_ID: ${{ inputs.chat_id }}
-          BOT_TOKEN: ${{ secrets.BOT_TOKEN }}
         run: python bot.py
